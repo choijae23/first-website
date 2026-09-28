@@ -1,0 +1,821 @@
+/* 색상과 크기를 변수로 두면 디자인을 한곳에서 바꿀 수 있습니다. */
+:root {
+  --green:#123f35;
+  --green-light:#eaf2ee;
+  --lime:#dcf598;
+  --ink:#202d29;
+  --muted:#61706a;
+  --line:#dfe6e1;
+  --bg:#f6f8f6;
+  --white:#fff;
+  font-family:Arial,"Malgun Gothic","Apple SD Gothic Neo",sans-serif;
+  color:var(--ink);
+  background:var(--bg);
+  font-synthesis:none
+}
+
+/* padding과 테두리를 포함해서 요소 크기를 계산합니다. */
+* {
+  box-sizing:border-box
+}
+
+body {
+  margin:0
+}
+
+button,input,select {
+  font:inherit
+}
+
+button,a,input,select {
+  -webkit-tap-highlight-color:transparent
+}
+
+button,select {
+  cursor:pointer
+}
+
+a {
+  color:inherit
+}
+
+button {
+  transition:background .18s,transform .18s
+}
+
+button:active {
+  transform:translateY(1px)
+}
+
+button:disabled {
+  cursor:wait;
+  opacity:.65
+}
+
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {
+  outline:3px solid #568779;
+  outline-offset:4px
+}
+
+[hidden] {
+  display:none!important
+}
+
+/* 키보드 사용자가 검색창으로 바로 이동하는 링크입니다. */
+.skip {
+  position:absolute;
+  left:16px;
+  top:-80px;
+  z-index:5;
+  background:white;
+  padding:12px
+}
+
+.skip:focus {
+  top:12px
+}
+
+/* 상단 로고와 소개 문구의 배치입니다. */
+.header {
+  height:92px;
+  border-bottom:1px solid var(--line);
+  padding:0 max(5vw,24px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:white
+}
+
+.logo {
+  text-decoration:none;
+  font-size:23px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  letter-spacing:-1px
+}
+
+.logo-icon {
+  background:var(--green);
+  color:var(--lime);
+  width:37px;
+  height:37px;
+  border-radius:11px;
+  display:grid;
+  place-content:center;
+  font-size:31px;
+  position:relative;
+  padding-bottom:5px
+}
+
+.logo-icon span {
+  position:absolute;
+  right:4px;
+  top:0;
+  font-size:24px
+}
+
+.wordmark {
+  font-size:11px;
+  letter-spacing:2px;
+  margin-left:7px;
+  color:var(--muted)
+}
+
+.header-caption {
+  font-size:14px;
+  color:var(--muted)
+}
+
+main {
+  max-width:1040px;
+  padding:0 28px;
+  margin:auto
+}
+
+/* 첫 화면의 큰 제목과 설명입니다. */
+.intro {
+  padding:52px 0 28px
+}
+
+.eyebrow {
+  font-size:13px;
+  font-weight:700;
+  color:var(--green);
+  letter-spacing:.03em;
+  margin:0 0 14px
+}
+
+h1 {
+  font-size:clamp(29px,4vw,42px);
+  letter-spacing:-1.8px;
+  line-height:1.35;
+  margin:0 0 14px
+}
+
+h1 span {
+  color:var(--green)
+}
+
+.intro>p:last-child {
+  color:var(--muted);
+  font-size:16px;
+  margin:0;
+  line-height:1.6
+}
+
+.mobile-break {
+  display:none
+}
+
+/* 검색창을 감싸는 카드와 입력 요소의 디자인입니다. */
+.search-panel {
+  border:1px solid var(--line);
+  border-radius:20px;
+  background:white;
+  padding:28px;
+  box-shadow:0 8px 30px #1a3d2906
+}
+
+form>label {
+  display:block;
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:12px
+}
+
+.search-row {
+  display:flex;
+  gap:10px
+}
+
+.input-wrap {
+  display:flex;
+  align-items:center;
+  gap:12px;
+  flex:1;
+  border:1px solid #cbd5ce;
+  border-radius:10px;
+  padding:0 17px;
+  min-width:0
+}
+
+.input-wrap:focus-within {
+  border-color:var(--green);
+  box-shadow:0 0 0 2px #123f3515
+}
+
+.input-wrap svg {
+  color:var(--green);
+  flex-shrink:0
+}
+
+input[type=text],#address {
+  border:0;
+  background:transparent;
+  height:58px;
+  width:100%;
+  min-width:0;
+  outline:none;
+  font-size:16px;
+  color:var(--ink)
+}
+
+#address::placeholder {
+  color:#78847f
+}
+
+.search-button {
+  border:0;
+  background:var(--green);
+  color:white;
+  font-weight:700;
+  border-radius:10px;
+  padding:0 24px;
+  min-height:58px;
+  white-space:nowrap
+}
+
+.search-button span {
+  margin-left:16px
+}
+
+.search-button:hover {
+  background:#20614f
+}
+
+.hint {
+  font-size:13px;
+  color:var(--muted);
+  margin:10px 0 22px
+}
+
+/* 유종 선택 버튼과 검색 반경의 배치입니다. */
+.filters {
+  border-top:1px solid #edf0ed;
+  padding-top:22px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:20px
+}
+
+fieldset {
+  border:0;
+  padding:0;
+  margin:0;
+  min-width:0
+}
+
+legend,.radius-field>label {
+  font-size:13px;
+  color:var(--muted);
+  margin-bottom:10px;
+  display:block
+}
+
+.fuel-options {
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap
+}
+
+.fuel-options label {
+  position:relative;
+  cursor:pointer
+}
+
+.fuel-options input {
+  position:absolute;
+  opacity:0;
+  width:1px;
+  height:1px
+}
+
+.fuel-options span {
+  display:block;
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:11px 19px;
+  font-size:14px;
+  font-weight:700
+}
+
+.fuel-options input:checked+span {
+  background:var(--green-light);
+  border-color:#9ebbad;
+  color:var(--green)
+}
+
+.fuel-options input:focus-visible+span {
+  outline:3px solid #568779;
+  outline-offset:3px
+}
+
+select {
+  color:var(--ink);
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:white;
+  padding:11px 30px 11px 12px;
+  font-size:14px;
+  min-height:42px
+}
+
+/* 데이터 연결 상태와 오류 안내의 색상 및 간격입니다. */
+.mode-notice {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin:16px 0 0;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.7;
+  flex-wrap:wrap
+}
+
+.pill {
+  font-size:12px;
+  border:1px solid #d2dcd4;
+  border-radius:5px;
+  padding:2px 8px;
+  white-space:nowrap;
+  color:var(--green);
+  font-weight:700
+}
+
+.text-button {
+  margin-left:auto;
+  border:0;
+  background:none;
+  color:var(--green);
+  padding:6px 0;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:4px
+}
+
+.status {
+  color:var(--muted);
+  font-size:14px;
+  margin:14px 0
+}
+
+.status:empty {
+  margin:0
+}
+
+.error {
+  margin-top:20px;
+  background:#fff2ed;
+  border:1px solid #e9c0b0;
+  padding:18px;
+  border-radius:12px;
+  color:#92371d;
+  line-height:1.7
+}
+
+.welcome {
+  padding:48px 0 36px
+}
+
+.step-number {
+  font-size:12px;
+  letter-spacing:2px;
+  color:#77857e
+}
+
+.welcome h2 {
+  font-size:21px;
+  letter-spacing:-.6px;
+  margin:13px 0 24px
+}
+
+.steps {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px
+}
+
+.steps>div {
+  border-top:1px solid var(--line);
+  padding-top:18px
+}
+
+.steps b {
+  font-size:12px;
+  color:#74877c;
+  margin-right:12px
+}
+
+.steps strong {
+  font-size:15px
+}
+
+.steps p {
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:0
+}
+
+.result-heading {
+  margin:36px 0 20px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px
+}
+
+.result-heading .eyebrow {
+  margin-bottom:8px
+}
+
+.result-heading h2 {
+  font-size:24px;
+  letter-spacing:-.8px;
+  margin:0
+}
+
+.sort-label {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:var(--muted);
+  font-size:13px
+}
+
+/* 가장 저렴한 주유소를 강조하는 카드입니다. */
+.best-card {
+  background:var(--green);
+  border-radius:16px;
+  padding:28px;
+  color:white;
+  margin-bottom:18px;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:20px
+}
+
+.best-label {
+  font-size:12px;
+  letter-spacing:.03em;
+  font-weight:700;
+  color:var(--lime);
+  margin:0 0 13px
+}
+
+.best-card h3 {
+  font-size:24px;
+  letter-spacing:-.6px;
+  margin:0 0 10px;
+  overflow-wrap:anywhere
+}
+
+.best-card p {
+  margin:8px 0 0;
+  line-height:1.6;
+  font-size:14px;
+  color:#d0e2d8
+}
+
+.best-price {
+  text-align:right;
+  align-self:center
+}
+
+.best-price strong {
+  font-size:40px;
+  letter-spacing:-1.5px;
+  color:var(--lime);
+  font-variant-numeric:tabular-nums
+}
+
+.best-price span {
+  font-size:14px;
+  margin-left:6px;
+  color:#d0e2d8
+}
+
+/* 주유소 목록의 이름, 순위, 가격을 정렬합니다. */
+.station-list {
+  display:grid;
+  gap:10px
+}
+
+.station-card {
+  background:white;
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:22px;
+  display:flex;
+  align-items:center;
+  gap:17px
+}
+
+.rank {
+  color:#68786f;
+  font-size:14px;
+  width:20px;
+  flex-shrink:0;
+  font-variant-numeric:tabular-nums
+}
+
+.station-info {
+  flex:1;
+  min-width:0
+}
+
+.station-info h3 {
+  margin:0;
+  font-size:17px;
+  letter-spacing:-.4px;
+  overflow-wrap:anywhere;
+  line-height:1.6
+}
+
+.station-info p {
+  font-size:13px;
+  color:var(--muted);
+  margin:7px 0 0;
+  line-height:1.6
+}
+
+.station-price {
+  text-align:right;
+  white-space:nowrap
+}
+
+.station-price strong {
+  font-size:24px;
+  font-variant-numeric:tabular-nums;
+  letter-spacing:-.7px
+}
+
+.station-price small {
+  font-size:12px;
+  color:var(--muted);
+  margin-left:4px
+}
+
+.station-price p {
+  font-size:12px;
+  color:var(--muted);
+  margin:6px 0 0
+}
+
+.tag {
+  font-size:11px;
+  background:var(--green-light);
+  color:var(--green);
+  padding:4px 7px;
+  border-radius:5px;
+  white-space:nowrap;
+  margin-left:8px;
+  vertical-align:middle
+}
+
+.data-note {
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.8;
+  margin:20px 0 30px
+}
+
+.empty {
+  border:1px dashed #bdcfc1;
+  border-radius:12px;
+  text-align:center;
+  padding:38px 20px;
+  line-height:1.8;
+  color:var(--muted)
+}
+
+/* 주소 후보와 연결 안내 영역입니다. */
+.choices {
+  background:white;
+  border:1px solid var(--line);
+  padding:24px;
+  border-radius:12px;
+  margin-top:24px
+}
+
+.choices h2 {
+  font-size:18px
+}
+
+.choices button {
+  display:block;
+  text-align:left;
+  width:100%;
+  padding:16px;
+  margin-top:8px;
+  background:var(--bg);
+  border:1px solid var(--line);
+  border-radius:8px;
+  color:var(--green);
+  line-height:1.5
+}
+
+footer {
+  border-top:1px solid var(--line);
+  display:flex;
+  gap:24px;
+  align-items:center;
+  padding:28px 0 36px;
+  margin-top:24px;
+  color:var(--muted);
+  font-size:12px
+}
+
+footer p {
+  flex:1;
+  line-height:1.8;
+  margin:0
+}
+
+footer a {
+  text-decoration:none
+}
+
+.footer-brand {
+  font-size:17px;
+  font-weight:800;
+  color:var(--green)
+}
+
+/* 휴대폰처럼 화면이 좁을 때 배치를 조정합니다. */
+@media(max-width:650px) {
+  .header {
+    height:72px;
+    padding:0 20px
+  }
+  .header-caption,.wordmark {
+    display:none
+  }
+  main {
+    padding:0 20px
+  }
+  .intro {
+    padding-top:35px
+  }
+  .intro>p:last-child {
+    font-size:14px
+  }
+  .mobile-break {
+    display:block
+  }
+  h1 {
+    letter-spacing:-1px
+  }
+  .search-panel {
+    padding:20px;
+    border-radius:15px
+  }
+  .search-row {
+    flex-direction:column
+  }
+  .search-button {
+    min-height:49px
+  }
+  .input-wrap {
+    padding:0 12px
+  }
+  #address {
+    font-size:14px
+  }
+  .filters {
+    align-items:stretch;
+    flex-direction:column;
+    gap:17px
+  }
+  .fuel-options {
+    gap:5px
+  }
+  .fuel-options span {
+    padding:10px 12px;
+    font-size:13px
+  }
+  .radius-field {
+    display:flex;
+    align-items:center;
+    justify-content:space-between
+  }
+  .radius-field>label {
+    margin:0
+  }
+  .text-button {
+    margin-left:0
+  }
+  .mode-notice {
+    column-gap:8px
+  }
+  .mode-notice #mode-text {
+    flex:1;
+    min-width:190px
+  }
+  .steps {
+    grid-template-columns:1fr;
+    gap:18px
+  }
+  .steps p {
+    margin:8px 0 0 30px
+  }
+  .welcome {
+    padding:34px 0 20px
+  }
+  .welcome h2 {
+    font-size:19px
+  }
+  .result-heading {
+    align-items:flex-start
+  }
+  .result-heading h2 {
+    font-size:21px
+  }
+  .sort-label {
+    font-size:0
+  }
+  .sort-label select {
+    max-width:133px
+  }
+  .best-card {
+    padding:22px;
+    grid-template-columns:1fr
+  }
+  .best-price {
+    text-align:left
+  }
+  .best-price strong {
+    font-size:36px
+  }
+  .best-card h3 {
+    font-size:22px
+  }
+  .station-card {
+    padding:18px 14px;
+    gap:10px;
+    flex-wrap:wrap
+  }
+  .station-info h3 {
+    font-size:15px
+  }
+  .station-price strong {
+    font-size:22px
+  }
+  .station-price {
+    margin-left:auto
+  }
+  .rank {
+    width:16px
+  }
+  .tag {
+    display:inline-block;
+    margin:3px 0 0 4px
+  }
+  .station-info {
+    min-width:140px
+  }
+  .station-price small {
+    display:block
+  }
+  .data-note {
+    font-size:12px
+  }
+  footer {
+    gap:14px;
+    flex-wrap:wrap
+  }
+  footer p {
+    min-width:230px;
+    order:3
+  }
+  .footer-brand {
+    flex:1
+  }
+}
+
+/* 기기에서 움직임 줄이기를 선택하면 화면 효과를 줄입니다. */
+@media(prefers-reduced-motion:reduce) {
+  * {
+    scroll-behavior:auto!important;
+    transition:none!important
+  }
+}
+
+@media(max-width:650px) {
+  footer .footer-brand {
+    flex:1 0 75px;
+    white-space:nowrap
+  }
+  footer p {
+    flex:1 0 100%;
+    min-width:0
+  }
+}
+
+
+.setup-steps { padding-left: 24px; line-height: 1.8; }
+.setup-steps li { margin-bottom: 12px; }
